@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+
+void stringslicing(char phrase[],char symbol){
+    int size=strlen(phrase);
+    int symbol_index=-1;
+    for(int i=0;i<size;i++){
+        if(phrase[i]==symbol){
+            symbol_index=i;
+            break;
+        }
+    }
+    if(symbol_index!=-1){
+        char slicedphrase[size-symbol_index];
+        int i= symbol_index+1,j=0;
+        while(i<size){
+            slicedphrase[j]=phrase[i];
+            i++;
+            j++;
+
+        }
+        slicedphrase[size-symbol_index-1] = '\0';
+        printf("Sliced phrase : %s\n ",slicedphrase);
+    }
+    else{
+        printf("Symbol is not found in phrase\n");
+    }
+
+}
+int main(){
+    char phrase[100];
+    char symbol;
+    printf("Enter a Phrase : ");
+    scanf("%s",&phrase);
+    size_t length = strlen(phrase);
+    printf("Enter a symbol mentioned in Phrase : ");
+    scanf(" %c",&symbol);
+    printf("Size : %zu\n",length);
+    stringslicing(phrase,symbol);
+}
